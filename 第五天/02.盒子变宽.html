@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="变宽">
+<div id="dv"></div>
+<script src="common.js"></script>
+<script>
+    var width=100;
+    function f1(){
+        width+=10;
+        my$("dv").style.width=width+"px";
+    }
+    my$("btn").onclick=function (){
+
+        var timeId=setInterval(f1,100);
+    }
+</script>
+</body>
+</html>

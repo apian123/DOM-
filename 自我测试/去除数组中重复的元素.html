@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var str=[1,2,3,0,1,2,3,5,8];
+    var o={};
+    var str1=[];
+    for(var i=0;i<str.length;i++){
+        if(!o[str[i]]){
+            o[str[i]]=true;
+            str1.push(str[i]);
+        }
+    }
+    console.log(str1);
+</script>
+</body>
+</html>

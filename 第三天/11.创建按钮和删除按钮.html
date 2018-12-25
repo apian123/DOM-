@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 500px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="创建" id="btn">
+<input type="button" value="删除" id="sc">
+<input type="button" value="删除所有" id="scall">
+<div id="dv"></div>
+<script src="common.js"></script>
+<script>
+    var i=0;
+    my$("btn").onclick=function (){
+        i++;
+         var obj=document.createElement("input");
+         obj.type="button";
+         obj.value="按钮"+i;
+         my$("dv").appendChild();
+    };
+    my$("sc").onclick=function (){
+        my$("dv").removeChild(my$("dv").lastElementChild);
+    }
+    my$("scall").onclick=function (){
+        while(my$("dv").lastElementChild){
+            my$("dv").removeChild(my$("dv").lastElementChild);
+        }
+    }
+</script>
+</body>
+</html>

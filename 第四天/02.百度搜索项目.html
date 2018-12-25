@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a:hover {
+            cursor: pointer;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+            /*background-color: pink;*/
+            text-align: center;
+        }
+          input {
+              outline: none;
+          }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="text" id="wb" style="width: 300px;height: 30px;"/>
+    <input type="button" id="btn" value="搜索" style="height: 34px;">
+</div>
+<script src="common.js"></script>
+<script>
+   var arr1=["小张是我的儿","小张是真的帅","你好啊","你是谁","小杨是真的好"];
+   my$("wb").onkeyup=function (){
+       if(my$("dv")){
+           my$("box").removeChild(my$("dv"));
+       }
+       var arr2=[];
+       for(var i=0;i<arr1.length;i++){
+           if(arr1[i].indexOf(this.value)==0&&this.value!=""){
+               arr2.push(arr1[i]);
+           }
+       }
+
+      if(this.value.length==0||arr2.length==0){
+          if(my$("dv")){
+              my$("box").removeChild(my$("dv"));
+          }
+
+      }else{
+          var dobj=document.createElement("div");
+          my$("box").appendChild(dobj);
+          dobj.id="dv";
+          dobj.style.width="304px";
+         /* dobj.style.height="400px";*/
+          dobj.style.border="1px solid blue";
+          dobj.style.marginLeft="80px";
+          for(var j=0;j<arr2.length;j++){
+              var pobj=document.createElement("p");
+              pobj.innerHTML="<a id='aa'>"+arr2[j]+"</a>";
+              pobj.id="pp";
+              pobj.style.textAlign="left";
+              pobj.style.marginLeft="0";
+              pobj.style.lineHeight="40px";
+              my$("dv").appendChild(pobj);
+              pobj.onmouseover=function (){
+                  this.style.backgroundColor="yellow";
+              };
+              pobj.onmouseout=function (){
+                  this.style.backgroundColor="";
+              }
+          }
+
+
+      }
+
+   }
+</script>
+</body>
+</html>

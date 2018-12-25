@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<input type="button" value="没怀孕" />
+<script>
+    var inp=document.getElementsByTagName("input");
+    for(var i=0;i<inp.length;i++){
+        inp[i].onclick=function (){
+            for(var j=0;j<inp.length;j++){
+                inp[j].value="没怀孕";
+            }
+            this.value="怀孕了";//注意：此处的this不能换成inp[i]，因为事件的发生实在加载页面以后的，当页面加载完以后i的值就固定为5了
+
+        }
+         }
+
+</script>
+
+</body>
+</html>

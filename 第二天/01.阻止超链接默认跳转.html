@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="../images/2.jpg" id="xx"><img src="../images/ll.jpg" ></a>
+<img src="" alt="" id="im">
+<script src="common.js"></script>
+<script>
+    my$("xx").onclick=function (){
+        my$("im").src=this.href;
+       return false;//阻止超链接默认跳转
+    };
+</script>
+</body>
+</html>

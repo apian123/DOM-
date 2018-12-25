@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            list-style-type: none;
+            overflow: hidden;
+        }
+        li {
+            float: left;
+            background-color: pink;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+           li.current{
+            background-color:red;
+        }
+        span {
+            color: deeppink;
+            font-size: 50px;
+        }
+        #dv {
+            border: 1px solid red;
+            display: inline-block;
+        }
+        #dv span {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="选一个" id="btn">
+<input type="button" value="选两个" id="btn1">
+<ul id="uu">
+    <li>小张</li>
+    <li>小明</li>
+    <li>小李</li>
+    <li>小红</li>
+    <li>小天</li>
+</ul>
+<div id="dv"></div>
+    <script>
+        var t;
+        var obj=document.getElementById("uu").getElementsByTagName("li");
+        var dd=document.getElementById("dv");
+        function f1() {
+            var num = parseInt(Math.random() * 5);
+            for(var i=0;i<obj.length;i++){
+                obj[i].className="";
+            }
+            obj[num].className="current";
+            var nodes=dd.children;
+            for(var i=0;i<nodes.length;i++) {
+                dd.removeChild(dd.children[i]);
+            }
+            var sp1=document.createElement("span");
+             sp1.id="sp";
+             dd.appendChild(sp1);
+            document.getElementById("sp").innerText=obj[num].innerText;
+            t=setTimeout("f1()", 100);
+        }
+        function f2(){
+           clearTimeout(t);
+        }
+        function f3() {
+            var num1 = parseInt(Math.random() * 5);
+            var num2 = parseInt(Math.random() * 5);
+            if (num1 == num2) {
+                var num1 = parseInt(Math.random() * 5);
+                var num2 = parseInt(Math.random() * 5);
+            }
+            for (var i = 0; i < obj.length; i++) {
+                obj[i].className = "";
+            }
+            obj[num1].className = "current";
+            obj[num2].className = "current";
+            var nodes=dd.children;
+            for(var i=0;i<nodes.length;i++) {
+                dd.removeChild(dd.children[i]);
+            }
+            var spp1=document.createElement("span");
+            spp1.id="sp";
+            dd.appendChild(spp1);
+            var spp2=document.createElement("span");
+            spp2.id="sp1";
+            dd.appendChild(spp2);
+            document.getElementById("sp").innerText = obj[num1].innerText;
+            document.getElementById("sp1").innerText = obj[num2].innerText;
+            t = setTimeout("f3()", 100);
+
+        }
+        document.getElementById("btn").onclick=function (){
+            if(this.value=="选一个"){
+                this.value="停止";
+                f1();
+            }else{
+                this.value="选一个";
+                f2();
+            }
+        }
+        document.getElementById("btn1").onclick=function (){
+            if(this.value=="选两个"){
+                this.value="停止";
+                f3();
+            }else{
+                this.value="选两个";
+                f2();
+            }
+        }
+
+    </script>
+</ul>
+</body>
+</html>

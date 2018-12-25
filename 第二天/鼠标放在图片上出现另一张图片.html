@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .yc {
+            display:none;
+        }
+        .xs {
+            display:block;
+        }
+
+    </style>
+</head>
+<body>
+<img src="../images/卡特.jpg" alt="" id="a" >
+<img src="../images/ll.jpg" alt="" class="yc" id="b">
+<script src="common.js"></script>
+<script>
+    my$("a").onmouseover=function (){
+        my$("b").className="xs";
+    }
+    my$("a").onmouseout=function (){
+        my$("b").className="yc";
+    }
+</script>
+</body>
+</html>

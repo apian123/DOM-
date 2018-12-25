@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #dv {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动到400" id="btn1">
+<input type="button" value="移动到800" id="btn2">
+<div id="dv"></div>
+<script src="common.js"></script>
+<script>
+    function animate(element,target){
+        clearInterval(element.timeId);
+        element.timeId=setInterval(function (){
+            var current=element.offsetLeft;//获取当前的位置（left的距离),没有单位
+            var step=9;
+            step=current<target?step:-step;
+            current+=step;
+            if(Math.abs(current-target)>Math.abs(step)) {
+                element.style.left = current + "px";
+            }else{
+                clearInterval(element.timeId);
+                element.style.left=target+"px";
+            }
+        },100);
+    }
+    my$("btn1").onclick=function (){
+        animate(my$("dv"),400);
+    };
+    my$("btn2").onclick=function (){
+        animate(my$("dv"),800);
+    };
+
+</script>
+</body>
+</html>

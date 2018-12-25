@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            height: 400px;
+            width: 200px;
+            background-color: pink;
+        }
+        ul {
+            list-style-type: none;
+            cursor: pointer;
+            margin-left: 0;
+        }
+        li:hover {
+            background-color: hotpink;
+
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="创建列表" id="btn">
+<div id="dv"></div>
+<script>
+    document.getElementById("btn").onclick=function (){
+        var arr=["小张","小红","小李","小天","小猪"];
+        var str="<ul>";
+        for(var i=0;i<arr.length;i++){
+            str+="<li>"+arr[i]+"</li>";
+        }
+        str+="</ul>";
+        document.getElementById("dv").innerHTML=str;
+    }
+</script>
+
+</body>
+</html>

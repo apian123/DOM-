@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="变色" id="btn">
+<ul id="uu">
+    <li>我是真的帅啊</li>
+    <li>我是真的帅啊</li>
+    <li>我是真的帅啊</li>
+    <li>我是真的帅啊</li>
+    <li>我是真的帅啊</li>
+    <script src="common.js"></script>
+    <script>
+        var nodes=my$("uu").children;
+        my$("btn").onclick=function (){
+            for(var i=0;i<nodes.length;i++){
+                nodes[i].style.backgroundColor=i%2==0?"red":"yellow";
+            }
+        }
+
+    </script>
+</ul>
+</body>
+</html>

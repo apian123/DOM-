@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="提交" id="btn" />
+<div id="div1">
+    <p>你是猪</p>
+    <p>你是猪</p>
+    <p>你是猪</p>
+    <p>你是猪</p>
+    <p>你是猪</p>
+</div>
+<div id="div2">
+    <p>你是狗</p>
+    <p>你是狗</p>
+    <p>你是狗</p>
+</div>
+<script>
+    //getElementsByTagName();返回的是一个伪字数组，往往需要遍历数组才能得具体值
+    document.getElementById("btn").onclick=function (){
+        var p1=document.getElementById("div1").getElementsByTagName("P");
+        var p2=document.getElementById("div2").getElementsByTagName("p");
+       for(var i=0;i<p1.length;i++){
+           p1[i].innerText="你好，世界！";
+       }
+
+        for(var i=0;i<p1.length;i++){
+            p2[i].innerText="Hello,World!";
+        }
+
+        p2.innerText="Hello,World!";
+    }
+</script>
+
+</body>
+</html>

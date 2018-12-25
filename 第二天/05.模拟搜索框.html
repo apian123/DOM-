@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" value="请输入内容" style="color:gray;" id="in">
+<script src="common.js"></script>
+<script>
+    my$("in").onfocus=function (){
+        if(this.value="请输入内容"){
+            this.value="";
+            this.style.color="black";
+        }
+    }
+    my$("in").onblur=function (){
+        this.value="请输入内容";
+        this.style.color="gray"
+    }
+</script>
+</body>
+</html>

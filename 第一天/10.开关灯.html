@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ss{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="关灯" id="btn" />
+<script>
+    document.getElementById("btn").onclick=function (){
+        if(document.body.className!="ss"){
+            document.body.className="ss";
+            this.value="开灯";
+        }else{
+            document.body.className="";
+            this.value="关灯";
+        }
+    }
+</script>
+</body>
+</html>

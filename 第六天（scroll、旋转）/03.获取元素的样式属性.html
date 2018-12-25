@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="dv"></div>
+<script src="common.js"></script>
+<script>
+    function getStyle(element,attr){
+       return window.getComputedStyle?window.getComputedStyle(element,null)[attr]:
+       element.currentStyle[attr];
+    }
+   var a=getStyle(my$("dv"),"left");
+    console.log(a);
+</script>
+</body>
+</html>

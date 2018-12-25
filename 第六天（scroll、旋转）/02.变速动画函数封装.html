@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #dv {
+            height: 100px;
+            width: 100px;
+            background-color: deeppink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动到400" id="btn1">
+<input type="button" value="移动到800" id="btn2">
+<div id="dv"></div>
+<script src="common.js"></script>
+<script>
+    my$("btn1").onclick = function () {
+        animate(my$("dv"), 400);
+    };
+    my$("btn2").onclick = function () {
+        animate(my$("dv"), 800);
+    };
+    function animate(element,target) {
+        clearInterval(element.timeId);
+        element.timeId=setInterval(function (){
+            var current=element.offsetLeft;
+            var step=(target-current)/10;
+            step=step<0?Math.floor(step):Math.ceil(step);
+            current+=step;
+            element.style.left=current+"px";
+            if(current==target){
+                clearInterval(element.timeId);
+
+            }
+            console.log("目标位置:"+target+",当前位置:"+current+",每次移动步数:"+step);
+        },20);
+
+    }
+</script>
+</body>
+</html>

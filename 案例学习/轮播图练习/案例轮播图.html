@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .all {
+            width: 520px;
+            height: 220px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .all .screen {
+            width: 500px;
+            height: 200px;
+            margin: 10px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen li {
+            float: left;
+        }
+
+        .screen ul {
+            width: 3000px;
+            left: 0;
+            top: 0;
+            position: absolute;
+        }
+
+        .screen ol li {
+            background-color: #fff;
+        }
+
+        .screen ol li.current {
+            background-color: red;
+            color: white;
+        }
+
+        #arr {
+            height: 40px;
+            width: 520px;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            opacity: 0.3;
+            font-weight: bold;
+            position: absolute;
+            font-family: '黑体';
+            line-height: 40px;
+            cursor: pointer;
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        .all:hover #arr {
+            display: block;
+        }
+
+        #arr #left {
+            top: 0;
+            left: 10px;
+        }
+
+        #arr #right {
+            top: 0;
+            right: 10px;
+        }
+
+        .screen ol {
+            position: absolute;
+            bottom: 10px;
+            left: 220px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='box'>
+    <div class="screen"><!--相框-->
+        <ul>
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+        </ul>
+        <ol>
+        </ol>
+    </div>
+    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+<script src="common.js"></script>
+<script>
+    //获取元素
+    var box = my$("box");//外部的大框
+    var screen = box.children[0];//获取显示框
+    var ulobj = screen.children[0];//获取ul
+    var list = ulobj.children;//获取ul中的li
+    var olobj = screen.children[1];//获取Ol
+    var imgwidth = screen.offsetWidth;//获取显示框的宽度
+    function animate(element, target) {
+        clearInterval(element.timeId);
+        element.timeId = setInterval(function () {
+            var current = element.offsetLeft;//获取元素的当前位置,数字类型，无单位
+            var step = 10;
+            step = current < target ? step : -step; //确定移动方向
+            current += step;
+            if (Math.abs(target - current) > Math.abs(step)) {
+                element.style.left = current + "px";
+            } else {
+                element.style.left = target + "px";
+            }
+        }, 10);
+    }//封装移动的函数
+    var pic = 0;
+    for (var i = 0; i < list.length; i++) {    //创建ol中的li元素，用于显示按钮
+        var oll = document.createElement("li");
+        olobj.appendChild(oll);
+        oll.style.width = 15 + "px";
+        oll.style.height = 15 + "px";
+        oll.style.fontSize = 5 + "px";
+        oll.style.cursor = "pointer";
+        oll.style.marginRight = 10 + "px";
+        oll.style.borderRadius = "50%";
+        oll.innerText = i + 1;
+        oll.setAttribute("index", i);  //设置自定义属性，取得按钮与图片的联系
+        oll.onmouseover = function () {
+            for (var j = 0; j < olobj.children.length; j++) {
+                olobj.children[j].removeAttribute(".current");//一开始去除所有属性
+            }
+            olobj.children[0].className = "";
+            this.className = "current";
+            pic = this.getAttribute("index"); //获取当前这个li的自定义属性值
+            animate(ulobj, -pic * imgwidth);//调用animate函数，实现ul的移动
+        };
+        oll.onmouseout = function () {
+            this.className = "";
+        };
+
+    } //实现图片与按钮的联系
+    olobj.children[0].className = "current";
+    //克隆ul中的第一张图片放在ul末端
+    Aulobj.appendChild(ulobj.children[0].cloneNode(true));
+
+    //设置鼠标点击右边按钮的事件
+    my$("right").onclick = f1;
+
+    function f1() {
+        if (pic == ulobj.children.length - 1) {
+            pic = 0;
+            ulobj.style.left = 0 + "px";
+        }
+        pic++;
+        animate(ulobj, -pic * imgwidth);
+        if (pic == ulobj.children.length - 1) {
+            olobj.children[olobj.children.length - 1].className = "";
+            olobj.children[0].className = "current";
+        } else {
+            for (var k = 0; k < olobj.children.length; k++) {
+                olobj.children[k].removeAttribute("class");
+            }
+            olobj.children[pic].className = "current";
+        }
+
+    };
+    //设置鼠标点击左边按钮的事件
+    my$("left").onclick = function () {
+        if (pic == 0) {
+            pic = list.length - 1;
+            ulobj.style.left = -pic * imgwidth + "px";
+        }
+        pic--;
+        animate(ulobj, -pic * imgwidth);
+        for (var i = 0; i < olobj.children.length; i++) {
+            olobj.children[i].removeAttribute("class");
+        }
+        //当前的pic索引对应的按钮设置颜色
+        olobj.children[pic].className = "current";
+
+    }
+    var time = setInterval(f1, 1000);
+    box.onmouseover = function () {
+        clearInterval(time);
+    };
+    box.onmouseout = function () {
+        time = setInterval(f1, 1000);
+    }
+
+</script>
+

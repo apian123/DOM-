@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            cursor: pointer;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li>你是猪</li>
+    <li>你是狗</li>
+    <li>你是牛</li>
+    <li>你是鱼</li>
+    <li>你是马</li>
+    <script src="common.js"></script>
+    <script>
+        var list=my$("ul1").getElementsByTagName("li");
+        for(var i=0;i<list.length;i++){
+            list[i].onmouseover=function (){
+                this.style.backgroundColor="hotpink";
+            }
+            list[i].onmouseout=function (){
+                this.style.backgroundColor="";
+            }
+        }
+    </script>
+</ul>
+</body>
+</html>

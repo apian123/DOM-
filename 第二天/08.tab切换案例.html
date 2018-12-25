@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        .box {
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            height: 300px;
+            width: 335px;
+        }
+        ul {
+            list-style-type: none;
+            cursor: pointer;
+        }
+        .box1 {
+            height: 50px;
+           /* background-color: yellow;*/
+        }
+        .box1 span {
+            width: 80px;
+            height: 50px;
+            background-color: pink;
+            display: inline-block;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .box span.current {
+            color: red;
+            border-bottom: 1px solid red;
+        }
+        .box ul li.current {
+            display: block;
+        }
+        .box ul li {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="bo">
+    <div class="box1">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>财经</span>
+        <span>综合</span>
+    </div>
+    <div class="box2">
+        <ul>
+            <li class="current">这是体育新闻哦</li>
+            <li>这是娱乐新闻哦</li>
+            <li>这是财经新闻哦</li>
+            <li>这是综合新闻哦</li>
+        </ul>
+    </div>
+</div>
+<script src="common.js"></script>
+<script>
+    var sp=my$("bo").getElementsByTagName("span");
+    var list=my$("bo").getElementsByTagName("li");
+    for(var i=0;i<sp.length;i++){
+        sp[i].setAttribute("index",i);
+        sp[i].onmouseover=function (){
+            this.className="current";
+            var num=this.getAttribute("index");
+            for(var k=0;k<list.length;k++){
+                list[k].removeAttribute("class");//去除类属性
+            }
+            list[num].className="current";
+        }
+        sp[i].onmouseout=function () {
+            this.className = "";
+        }
+
+    }
+</script>
+
+</body>
+</html>

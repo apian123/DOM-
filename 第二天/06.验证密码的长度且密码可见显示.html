@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span>密码：</span>
+<input type="password" value="" style="color: gray;" id="in">
+<input type="button" value="显示密码" id="btn">
+<script src="common.js"></script>
+<script>
+    my$("btn").onclick=function () {
+        if (my$("in").type == "password") {
+        my$("in").type = "text";
+        this.value = "隐藏密码";
+    }else if(my$("in").type == "text"){
+            my$("in").type = "password";
+            this.value = "显示密码";
+        }
+    }
+    my$("in").onblur=function (){
+        if(5<this.value.length){
+            alert("密码长度过长");
+            this.value="";
+        }
+    }
+</script>
+</body>
+</html>

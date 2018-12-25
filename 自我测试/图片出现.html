@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            width: 800px;
+            height: 442px;
+            background-color: pink;
+            transition:all 0.5s;
+            position:absolute;
+            top: 0;
+            left:0;
+            visibility:hidden;
+        }
+        a:hover{
+            cursor: pointer;
+        }
+        a {
+            position: relative;
+            display:inline-block;
+
+        }
+        a:hover div {
+
+            transform:translateX(425px);
+            visibility:visible;
+        }
+
+
+    </style>
+</head>
+<body>
+<a href="#"><img src="../images/ll.jpg" alt="">
+   <div></div>
+</a>
+
+
+</body>
+</html>

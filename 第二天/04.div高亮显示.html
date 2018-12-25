@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: pink;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+    var di=document.getElementsByTagName("div");
+    for(var i=0;i<di.length;i++){
+        di[i].onmouseover=function (){
+        this.style.border="2px solid red";//注意这个地方的this不能是di[i]
+        }
+        di[i].onmouseout=function (){
+            this.style.border="";
+        }
+    }
+</script>
+</body>
+</html>

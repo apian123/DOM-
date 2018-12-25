@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            margin: 100px auto;
+            height: 500px;
+            width: 400px;
+        }
+        #small {
+            position: absolute;
+
+        }
+        #big {
+            height: 200px;
+            width: 200px;
+            overflow: hidden;
+            margin-left: 220px;
+            display: none;
+            position: relative;
+
+        }
+        #hid {
+            width: 70px;
+            height: 70px;
+            background-color: #fff;
+            opacity: 0.2;
+            position: absolute;
+            display: none;
+        }
+        #bi {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+<div id="small">
+    <div id="hid"></div>
+    <img src="images/small.png" alt="">
+</div>
+<div id="big">
+    <img src="images/big.jpg" alt="" id="bi">
+</div>
+</div>
+<script src="common.js"></script>
+<script>
+    my$("small").onmouseover=function () {
+        my$("hid").style.display="block";
+        my$("big").style.display="block";
+        my$("small").style.cursor="move";
+
+    };
+    my$("small").onmouseout=function () {
+        my$("hid").style.display="none";
+        my$("big").style.display="none";
+
+    };
+    document.onmousemove=function (e){
+        var x=e.clientX-my$("small").offsetLeft;
+        x=x-35;
+        x=x<0?0:x;
+        var xmax=my$("small").offsetWidth-my$("hid").offsetWidth;
+        x=x>xmax?xmax:x;
+        y=y-35;
+        var y=e.clientY-my$("small").offsetTop;
+        var ymax=my$("small").offsetHeight-my$("hid").offsetHeight;
+        y=y<0?0:y;
+        y=y>ymax?ymax:y;
+
+        my$("hid").style.left=x+"px";
+        my$("hid").style.top=y+"px";
+        var z=my$("bi").offsetWidth-my$("big").offsetWidth;
+        var index=z/xmax;
+        my$("bi").style.left=-x*index+"px";
+        my$("bi").style.top=-y*index+"px";
+    }
+
+</script>
+</body>
+</html>

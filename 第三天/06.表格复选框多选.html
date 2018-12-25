@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        table {
+            border: 1px solid #c0c0c0;
+            width: 300px;
+            margin: 100px auto;
+            border-collapse: collapse;  //使单元格之间合并为同一条边线
+            border-spacing: 0;   //单元格之间的距离
+        }
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+        th, td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <thead id="th">
+    <tr>
+        <th><input type="checkbox" id="all"></th>
+        <th>菜名</th>
+        <th>饭店</th>
+    </tr>
+    </thead>
+    <tbody id="tb">
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>红烧排骨</td>
+        <td>黑饭店</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>红烧排骨</td>
+        <td>黑饭店</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>红烧排骨</td>
+        <td>黑饭店</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>红烧排骨</td>
+        <td>黑饭店</td>
+    </tr>
+    </tbody>
+</table>
+<script src="common.js"></script>
+<script>
+    var tdd=my$("tb").getElementsByTagName("input");
+    my$("all").onclick=function (){
+        for(var i=0;i<tdd.length;i++){
+            tdd[i].checked=this.checked;
+        }
+    };
+    for(var j=0;j<tdd.length;j++){
+        tdd[j].onclick=function (){
+            var flag=true;
+            for(var k=0;k<tdd.length;k++) {
+                if (!tdd[k].checked) {
+                    flag=false;
+                    break;
+                }
+            }
+                my$("all").checked=flag;
+            };
+    }
+</script>
+
+</body>
+</html>

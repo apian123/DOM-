@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="确定" id="btn" />
+<input type="text" value=""/>
+<input type="text" value=""/>
+<input type="text" value=""/>
+<input type="text" value=""/>
+<input type="text" value=""/>
+<script>
+    document.getElementById("btn").onclick=function (){
+        var inp=document.getElementsByTagName("input");
+        for(var i=0;i<inp.length;i++){
+            if(inp[i].type!="button"){  //实现不修改按钮键内容的效果
+                inp[i].value="我是真的帅";
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="btn" value="点击"><br />
+<input type="text" value="你是猪" name="name1"><br />
+<input type="text" value="你是猪" name="name2"><br />
+<input type="text" value="你是猪" name="name1"><br />
+<input type="text" value="你是猪" name="name2"><br />
+<script src="common.js"></script>
+<script>
+    my$("btn").onclick=function (){
+        var inputs=document.getElementsByName("name1");
+        for(var i=0;i<inputs.length;i++){
+            inputs[i].value="你是狗";
+            inputs[i].style.color="red";
+        }
+    }
+</script>
+</body>
+</html>

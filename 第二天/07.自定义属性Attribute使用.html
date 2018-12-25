@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li {
+            list-style: none;
+        }
+        li:hover {
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<ul id="ull">
+    <li>数学</li>
+    <li>英语</li>
+    <li>化学</li>
+    <script src="common.js"></script>
+    <script>
+        var ll=my$("ull").getElementsByTagName("li");
+        for(var i=0;i<ll.length;i++){
+            ll[i].setAttribute("score",10*i);
+            ll[i].onclick=function (){
+                alert(this.getAttribute("score"));
+            }
+
+        }
+    </script>
+</ul>
+</body>
+</html>
